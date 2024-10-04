@@ -1,0 +1,3 @@
+USER_POSTGRES=postgres
+HOST_POSTGRES=localhost
+PASSWORD_POSTGRES=password
