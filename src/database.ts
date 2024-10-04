@@ -6,9 +6,9 @@ interface PostgreSQLError extends Error {
 const dbName = "todo_project_db";
 
 const clientConfig = {
-    user: process.env.USER_POSTGRES,
-    host: process.env.HOST_POSTGRES,
-    password: process.env.PASSWORD_POSTGRES,
+    user: process.env.USER_POSTGRESQL,
+    host: process.env.HOST_POSTGRESQL,
+    password: process.env.PASSWORD_POSTGRESQL,
     port: 5432,
 };
 
@@ -18,7 +18,7 @@ const poolConfig = {
 };
 
 const client = new Client(clientConfig);
-const pool = new Pool(poolConfig);
+export const pool = new Pool(poolConfig);
 
 const createDatabase = async () => {
     try {
@@ -76,8 +76,7 @@ export const initDatabase = async () => {
 };
 
 initDatabase().then(() => {
-    console.log("-------------------------");
-    console.log(`Connected to POSTGRES DB: ${dbName}`);
-    console.log("-------------------------");
-    process.exit();
+    console.log("---------------------------------------");
+    console.log(`Connected to POSTGRESQL DB: ${dbName}`);
+    console.log("---------------------------------------");
 });
