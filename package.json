@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.ts",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "debug": "nodemon --inspect"
   },
   "keywords": [],
   "author": "",
