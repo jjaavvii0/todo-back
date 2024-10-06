@@ -27,7 +27,8 @@ const createDatabase = async () => {
         console.log(`DB ${dbName} CREATED`);
     } catch (error) {
         const pgError = error as PostgreSQLError;
-        if (pgError.code === "42P04") {// Code to "DB EXISTS"
+        if (pgError.code === "42P04") {
+            // Code to "DB EXISTS"
             console.log(`DB ${dbName} EXISTS`);
         } else {
             console.error("Error creating the DB:", error);
@@ -69,14 +70,14 @@ const createTable = async () => {
     }
 };
 
-
 export const initDatabase = async () => {
     await createDatabase();
     await createTable();
 };
-
-initDatabase().then(() => {
-    console.log("---------------------------------------");
-    console.log(`Connected to POSTGRESQL DB: ${dbName}`);
-    console.log("---------------------------------------");
-});
+if (process.env.NODE_ENV !== "test") {
+    initDatabase().then(() => {
+        console.log("---------------------------------------");
+        console.log(`Connected to POSTGRESQL DB: ${dbName}`);
+        console.log("---------------------------------------");
+    });
+}

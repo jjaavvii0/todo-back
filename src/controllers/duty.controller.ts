@@ -15,7 +15,7 @@ export const getDuties = async (req: Request, res: Response): Promise<void> => {
             res.status(404).json({ message: "No duties found" });
         }
     } catch (e) {
-        console.error(e);
+        // console.error(e);
         res.status(500).json({ message: "Error retrieving duties" });
     }
 };
@@ -29,7 +29,7 @@ export const createDuty = async (
         const duty = await createNewDuty({ name, description, status });
         res.status(201).json(duty);
     } catch (e) {
-        console.error(e);
+        // console.error(e);
         res.status(500).json({ message: "Error creating duty" });
     }
 };
@@ -49,7 +49,7 @@ export const deleteDuty = async (
             res.status(404).json({ message: `Duty with ID:${id} not found` });
         }
     } catch (e) {
-        console.error(e);
+        // console.error(e);
         res.status(500).json({ message: "Error deleting duty" });
     }
 };
@@ -73,7 +73,7 @@ export const updateDuty = async (
             res.status(404).json({ message: `Duty with ID:${id} not found` });
         }
     } catch (e) {
-        console.error(e);
+        // console.error(e);
         res.status(500).json({ message: "Error updating duty" });
     }
 };
