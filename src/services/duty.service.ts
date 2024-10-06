@@ -7,13 +7,11 @@ interface DutyData {
     status: boolean;
 }
 
-// Obtener todas las duties
 export const getAllDuties = async (): Promise<any[]> => {
     const { rows }: QueryResult = await pool.query("SELECT * FROM duties");
     return rows;
 };
 
-// Crear una nueva duty
 export const createNewDuty = async (dutyData: DutyData): Promise<any> => {
     const { name, description, status } = dutyData;
     const { rows }: QueryResult = await pool.query(
@@ -23,7 +21,6 @@ export const createNewDuty = async (dutyData: DutyData): Promise<any> => {
     return rows[0];
 };
 
-// Eliminar una duty por ID
 export const removeDutyById = async (id: string): Promise<boolean> => {
     const result: QueryResult = await pool.query(
         "DELETE FROM duties WHERE id = $1",
@@ -36,7 +33,6 @@ export const removeDutyById = async (id: string): Promise<boolean> => {
     return false;
 };
 
-// Actualizar una duty por ID
 export const updateDutyById = async (
     id: string,
     dutyData: DutyData
